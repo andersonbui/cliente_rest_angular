@@ -1,0 +1,7 @@
+{
+  "/RestJR/services/*": {
+    "target": "http://10.42.0.53:8081",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
