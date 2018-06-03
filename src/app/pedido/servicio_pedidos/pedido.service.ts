@@ -15,17 +15,8 @@ export class PedidoService {
   constructor(public client: HttpClient) { }
 
   registrarPedido(pedido: Pedido): Observable<Pedido> {
-    // let headers = new HttpHeaders().set('Autorization', 'auth-token');
+
     return this.client.put<any>(environment.url + 'microserviciopedido/registrarPedido', pedido);
   }
-/*
-  setPedidoSelected(Pedido: Pedido) {
-    this.selected = Pedido;
-  }
-
-  loadSelected(id: string): Observable<Pedido> {
-    return this.selected ? of(this.selected) : this.client.get<Pedido>(environment.url
-      + '/Pedido/' + id + '?api_key=' + environment.apiKey + '&language=es');
-  }*/
 
 }

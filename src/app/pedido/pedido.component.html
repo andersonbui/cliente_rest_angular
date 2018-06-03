@@ -1,10 +1,19 @@
+<h1 style="text-align: center">Zona Estilos</h1>
+<h2 style="text-align: center">Ingrese aqui los datos para su pedido</h2>
+
 <main role="main" class="container">
   <div class="starter-template">
     <form #formPedido="ngForm">
 
       <div class="form-group">
         <label for="id_nombre">Nombre</label>
-        <input  #name="ngModel"  [(ngModel)]="nuevoPedido.nombre" name="nombre" type="text" class="form-control" id="id_nombre" placeholder="Nombre" required>
+        <input  #name="ngModel"  [(ngModel)]="nuevoPedido.nombre" name="nombre" type="text" 
+        class="form-control" id="id_nombre" placeholder="Nombre" 
+         [ngClass]="{ 'is-invalid': formPedido.submitted && name.invalid }"
+        required>
+        <div *ngIf="formPedido.submitted && name.invalid" class="invalid-feedback">
+            <div *ngIf="name.errors.required">Nombre es obligatorio</div>
+        </div>
       </div>
 
 
@@ -12,7 +21,7 @@
         <div class="col-md-6 mb-3">
           <label for="tipo_identificacion">Tipo de Identificacion</label>
           <select  #name="ngModel"  [(ngModel)]="nuevoPedido.tipo_identificacion" name="id"  class="form-control" id="tipo_identificacion"  required>
-            <option  value="">Seleccione un tipo</option>
+            <option value="">Seleccione un tipo</option>
             <option value="Cedula">Cedula</option>
             <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
             <option value="Pasaporte">Pasaporte</option>
@@ -22,7 +31,12 @@
       
         <div class="col-md-6 mb-3">
             <label for="id_identific">Identificacion</label>
-            <input  #name="ngModel"  [(ngModel)]="nuevoPedido.identificacion" name="identificacion"  type="text" class="form-control" id="id_identific" placeholder="Identificacion" required>
+            <input  #name="ngModel"  [(ngModel)]="nuevoPedido.identificacion" name="identificacion"
+            [ngClass]="{ 'is-invalid': formPedido.submitted && identificacion.invalid }"
+            type="text" class="form-control" id="id_identific" placeholder="Identificacion" required>
+            <div *ngIf="formPedido.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Identificacion es obligatoria</div>
+            </div>
         </div>
       </div>
       <div class="form-group">
@@ -57,10 +71,10 @@
         </div>-->
       </div>
 
+      <button [disabled]="formPedido.invalid"  (click)="registrarPedido()" class="btn btn-primary" >Enviar Pedido</button>
+      <!--{{ respuesta | async | json }} [disabled]="formPedido.invalid" -->
     </form>
     
-    <button  [disabled]="formPedido.invalid"  (click)="registrarPedido()" class="btn btn-primary" >Enviar Pedido</button>
-    <!--{{ respuesta | async | json }}-->
   </div>
 
 </main>
