@@ -31,3 +31,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 este proyecto utiliza un proxy configurado en el archivo "proxy.conf.json" para poder acceder al servicio de consulta de productos y registro de pedidos
+
+Este programa se debe ejecutar con la intruccion: "ng serve  --proxy-config proxy.conf.json --host 0.0.0.0" para ejecutarlo con el proxy y tener acceso desde cualquier ip
+o tambien con el comando "npm start" que esta configurado para que se ejecute como en la primera instruccion pero sin acceso desde cualquier ip.
+
