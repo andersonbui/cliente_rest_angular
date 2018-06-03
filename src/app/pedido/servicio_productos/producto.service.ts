@@ -17,14 +17,5 @@ export class ProductoService {
   loadProductos(): Observable<Producto[]> {
     return this.client.get<any>(environment.url + 'microservicioproductos/obtenerproductos');
   }
-/*
-  setProductoSelected(Producto: Producto) {
-    this.selected = Producto;
-  }
-
-  loadSelected(id: string): Observable<Producto> {
-    return this.selected ? of(this.selected) : this.client.get<Producto>(environment.url
-      + '/Producto/' + id + '?api_key=' + environment.apiKey + '&language=es');
-  }*/
 
 }

@@ -16,7 +16,7 @@ export class PedidoComponent implements OnInit {
   productos: Producto[];
   posts: Observable<Producto[]>;
   respuesta: Observable<any>;
-  nuevoPedido: Pedido;
+  nuevoPedido: Pedido = new Pedido(null, null, null, null, null, null, null, null, false);
   // productos: Producto[] = [new Producto('pacho', 23000), new Producto('luis', 23000)];
 
   constructor(public service_pedido: PedidoService, public service_producto: ProductoService) {
@@ -28,19 +28,8 @@ export class PedidoComponent implements OnInit {
   }
 
   registrarPedido() {
-    const unPedido: Pedido = {
-      nombre: 'yesmi',
-      tipo_identificacion: 'cedula',
-      identificacion: '1059',
-      tipo_ropa: 'camisas formales',
-      cantidad: 5,
-      fecha_hora_entrega: '01/05/2018',
-      direccion_entrega: 'B esmeralda',
-      precio_total: '23000',
-      valido: null
-    };
-
-    this.respuesta = this.service_pedido.registrarPedido(unPedido);
+    this.respuesta = this.service_pedido.registrarPedido(this.nuevoPedido);
+    this.respuesta.subscribe();
   }
 
 }
