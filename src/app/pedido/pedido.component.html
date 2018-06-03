@@ -5,6 +5,7 @@
         <label for="id_nombre">Nombre</label>
         <input type="text" class="form-control" id="id_nombre" placeholder="Nombre" required>
       </div>
+
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="id_tipo_identificacion">Tipo de cedula</label>
@@ -16,6 +17,7 @@
             <option value="Cedula de estranjería">Cedula de estranjería</option>
           </select>
         </div>
+      
         <div class="col-md-6 mb-3">
             <label for="id_identific">Identificacion</label>
             <input type="text" class="form-control" id="id_identific" placeholder="Identificacion" required>
@@ -25,7 +27,7 @@
         <label for="id_tipo_producto">Tipo de Producto</label>
         <select class="form-control" id="id_tipo_producto"  required>
           <option  value="">Seleccione un tipo</option>
-          <option class="col s12 m6 l4" *ngFor="let produc of productos | async">
+          <option class="col s12 m6 l4" *ngFor="let produc of productos ">
               <label>{{produc.nombre}}</label>
           </option>
         </select>
@@ -47,10 +49,17 @@
       <div class="form-group">
         <label for="id_direccion">Direccion de entrega</label>
         <input type="text" class="form-control" id="id_direccion" placeholder="Direccion de entrega" required>
+        
+        <div class="col s12 m6 l4" *ngFor="let post of posts | async">
+          <label for="id_direccion"> es una staciom: {{ post | json }} </label>
+        </div>
+  
       </div>
 
-      <button class="btn btn-primary" type="submit">Submit form</button>
+      <button  class="btn btn-primary" type="submit">Enviar Pedido</button>
     </form>
+    <button (click)="registrarPedido()" class="btn btn-primary" >Enviar Pedido</button>
+    {{ respuesta | async | json }}
   </div>
 
 </main>

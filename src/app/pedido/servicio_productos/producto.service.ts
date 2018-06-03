@@ -15,10 +15,7 @@ export class ProductoService {
   constructor(public client: HttpClient) { }
 
   loadProductos(): Observable<Producto[]> {
-    return this.client.get<any>(environment.url + 'microservicioproductos/obtenerproductos'
-      ).pipe(
-        map(x => x.results as Producto[])
-      );
+    return this.client.get<any>(environment.url + 'microservicioproductos/obtenerproductos');
   }
 /*
   setProductoSelected(Producto: Producto) {
